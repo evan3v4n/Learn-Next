@@ -42,7 +42,7 @@ export default function CreateForm() {
         />
       </label>
       <label>
-        <span>Title:</span>
+        <span>Body:</span>
         <textarea
           required
           onChange={(e) => setBody(e.target.value)}
@@ -60,6 +60,7 @@ export default function CreateForm() {
           <option value="high">High Priority</option>
         </select>
       </label>
+
       <button 
         className="btn-primary" 
         disabled={isLoading}

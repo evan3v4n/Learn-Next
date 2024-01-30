@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation"
+import { notFound, redirect } from "next/navigation"
 
 export async function generateStaticParams() {
     const res = await fetch('http://localhost:4000/tickets/')
@@ -12,29 +12,40 @@ export async function generateStaticParams() {
 
 async function getTicket(id) {
     // await new Promise(resolve => setTimeout(resolve, 3000))
-
     const res = await fetch('http://localhost:4000/tickets/' + id, {
         next: {
             revalidate: 60
         }
     })
-
     if (!res.ok) {
         notFound()
     }
-
     return res.json()
 }
 
+async function deleteTicket(id) {
+    const res = await fetch('http://localhost:4000/tickets/' + id, {
+        next: {
+            method: 'DELETE'
+        }})
+    if (!res.ok) {
+        throw new Error('Error deleting ticket')
+    }
+    // redirect('../tickets')
+}
 
 export default async function TicketDetails({ params }) {
     const ticket = await getTicket(params.id)
 
+    const handleDelete = function() {
+        deleteTicket(params.id)
+    }
     return (
     <main>
         <nav>
             <h2>Ticket Details</h2>
         </nav>
+        <button onClick={handleDelete} className="btn-primary">Delete</button>
 
         <div className="card">
             <h3>{ticket.title}</h3>
