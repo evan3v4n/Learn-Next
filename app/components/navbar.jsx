@@ -1,21 +1,24 @@
 import Link from 'next/link'
-import React from 'react'
 import Logo from './dojo-logo.png'
 import Image from 'next/image'
+import LogoutButton from './LogoutButton'
 
-export default function navbar() {
+export default function navbar({ user }) {
   return (
     <nav>
-    <Image
-      src={Logo}
-      alt='Dojo Logo'
-      width={70}
-      quality={100}
-      placeholder='blur'
-      />
-        <h1>Evan helpdesk</h1>
+        <Image
+        src={Logo}
+        alt='Dojo Logo'
+        width={70}
+        quality={100}
+        placeholder='blur'
+        />
+        <Link href="/" className='font-bold text-primary text-lg hover:text-primary'>Evan's Helpdesk</Link>
         <Link href="/">Dashboard</Link>
-        <Link href="/news">news</Link>
-      </nav>
+        <Link href="/news" className='mr-auto'>news</Link>
+
+        {user && <span>Hello, {user.email}</span>}
+        <LogoutButton/>
+    </nav>
   )
 }

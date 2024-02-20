@@ -1,6 +1,6 @@
 import TicketList from "./TicketList";
 import { Suspense } from "react"
-import Loading from "./loading";
+import Loading from "../loading";
 import Link from "next/link";
 
 export default function Tickets() {
