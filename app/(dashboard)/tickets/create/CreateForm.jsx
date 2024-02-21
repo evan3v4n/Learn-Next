@@ -31,6 +31,7 @@ export default function CreateForm() {
     if (json.data) {
       router.refresh()
       router.push('/tickets')
+      router.refresh()
     }
     
   }

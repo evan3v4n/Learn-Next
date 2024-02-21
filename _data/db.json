@@ -1,3 +1,4 @@
+// not used anymore now that supabase database is used
 {
   "tickets": [
     {

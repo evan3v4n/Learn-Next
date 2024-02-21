@@ -6,8 +6,8 @@ import Link from "next/link";
 export default function Tickets() {
   return (
     <main>
-      <h2 className="flex justify-center text-xl">Tickets</h2>
-      <p className="flex justify-center text-sm">Currently open tickets.</p>
+      <h2>Tickets</h2>
+      <p>Currently open tickets.</p>
       
       <div className="flex justify-center my-5">
         <Link href="/tickets/create">

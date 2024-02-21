@@ -26,5 +26,5 @@ export async function POST(request) {
         .select()
         .single()
 
-    return NextResponse.json({ data, error })
+    return NextResponse.json({ data, error})
 }
